@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Police Knife Crime Data</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="Scripts/jquery-1.10.2.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/webservices.js"></script>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/Site.css" rel="stylesheet" />
+    <script src="Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">Knife crimes</a>
+                <a class="navbar-brand" href="">Graph</a>
+                <a class="navbar-brand" href="map.html">Map</a>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <div class="row">
+            <div class="col-md-12">
+                &nbsp;
+            </div>
+        </div>
+        <div class="row">
+            <label for="knifecrimebyyear">Select year:</label>
+            <select name="knifecrimebyyear" id="yearlyresults" onchange="getGraphYearlyKnifeCrimes();">
+                <option value="2008-09" selected="selected">2008 - 2009</option>
+                <option value="2009-10">2009 - 2010</option>
+                <option value="2010-11">2010 - 2011</option>
+                <option value="2011-12">2011 - 2012</option>
+                <option value="2012-13">2012 - 2013</option>
+                <option value="2013-14">2013 - 2014</option>
+                <option value="2014-15">2014 - 2015</option>
+                <option value="2015-16">2015 - 2016</option>
+                <option value="2016-17">2016 - 2017</option>
+                <option value="2017-18">2017 - 2018</option>
+                <option value="2018-19">2018 - 2019</option>
+            </select>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                &nbsp;
+            </div>
+        </div>
+        <div class ="row">
+            <div class="col-md-12" id="barChartContainer">
+                <canvas id="yearlyKnifeCrimesBarChart" style="width:100%;max-width:1000px"></canvas>
+            </div>
+        </div>
+        <div class ="row">
+            <div class="col-md-12" id="doughnutChartContainer"></div>
+                <canvas id="yearlyKnifeCrimesDoughnutChart" style="width:100%;max-width:1000px"></canvas>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; Student ID: 100540796</p>
+        </footer>
+    </div>
+    <script>
+        window.onload = function()
+        {
+            getGraphYearlyKnifeCrimes();
+        };
+    </script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+    </script>
+</body>
+</html>

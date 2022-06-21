@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    overflow-y: hidden; /* Hide vertical scrollbar */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: 25vw 75vw;
+    grid-template-rows: 100vh;
+    max-height: 10%;
+}
+
+.sidebar{
+    margin-left: 15px;
+}
+
+.map{
+    width: 100%; 
+    height: calc(100% - 100px);
+}
+
+.table{
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 15px;
+    max-width: 90%;
+    overflow-y: scroll;
+    max-height: 70%;
+}
+
+#myposition {
+    color:brown;
+    font-size: 100;
+}

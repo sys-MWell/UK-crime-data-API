@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Police Knife Crime Data</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="Scripts/jquery-1.10.2.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/webservices.js"></script>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/Site.css" rel="stylesheet" />
+    <script src="Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="">Knife crimes</a>
+                <a class="navbar-brand" href="graph.html">Graph</a>
+                <a class="navbar-brand" href="map.html">Map</a>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <div class="row">
+            <div class="col-md-12">
+                &nbsp;
+            </div>
+        </div>
+        <div class="row">
+            <!--
+            <div class="col-md-12">
+                <input type="button" value="Get All Books" class="btn btn-sm btn-primary" onclick="getAllKnifeCrimes();" />
+            </div>
+            -->
+            <label for="availablereuslts">Filter:</label>
+            <select name="selectavailableresults" id="availableresults" onchange="getQuantity();">
+                <option value="100">100</option>
+                <option value="200">200</option>
+                <option value="500">500</option>
+                <option value="1000">1000</option>
+                <option value="All" selected="selected">All</option>
+            </select>
+            <label for="selectpoliceforce">Police force:</label>
+            <select name="selectpoliceforce" id="searchcrimebyforce" onchange="getCrimeByFilter();">
+                <option value="All" selected="selected">All</option>
+                <option value="Avon and Somerset">Avon and Somerset</option>
+                <option value="Bedfordshire">Bedfordshire</option>
+                <option value="Cambridgeshire">Cambridgeshire</option>
+                <option value="Cheshire">Cheshire</option>
+                <option value="Cleveland">Cleveland</option>
+                <option value="Cumbria">Cumbria</option>
+                <option value="Derbyshire">Derbyshire</option>
+                <option value="Devon and Cornwall">Devon and Cornwall</option>
+                <option value="Dorset">Dorset</option>
+                <option value="Durham">Durham</option>
+                <option value="Dyfed-Powys">Dyfed-Powys</option>
+                <option value="Essex">Essex</option>
+                <option value="Gloucestershire">Gloucestershire</option>
+                <option value="Greater Manchester">Greater Manchester</option>
+                <option value="Gwent">Gwent</option>
+                <option value="Hampshire">Hampshire</option>
+                <option value="Hertfordshire">Hertfordshire</option>
+                <option value="Humberside">Humberside</option>
+                <option value="Kent">Kent</option>
+                <option value="Lancashire">Lancashire</option>
+                <option value="Leicestershire">Leicestershire</option>
+                <option value="Lincolnshire">Lincolnshire</option>
+                <option value="Merseyside">Merseyside</option>
+                <option value="Metropolitan Police">Metropolitan Police</option>
+                <option value="Norfolk">Norfolk</option>
+                <option value="North Wales">North Wales</option>
+                <option value="North Yorkshire">North Yorkshire</option>
+                <option value="Northamptonshire">Northamptonshire</option>
+                <option value="Northumbria">Northumbria</option>
+                <option value="Nottinghamshire">Nottinghamshire</option>
+                <option value="South Wales">South Wales</option>
+                <option value="South Yorkshire">South Yorkshire</option>
+                <option value="Staffordshire">Staffordshire</option>
+                <option value="Suffolk">Suffolk</option>
+                <option value="Surry">Surry</option>
+                <option value="Sussex">Sussex</option>
+                <option value="Thames Valley">Thames Valley</option>
+                <option value="Warwickshire">Warwickshire</option>
+                <option value="West Mercia">West Mercia</option>
+                <option value="West Midlands">West Midlands</option>
+                <option value="West Yorkshire">West Yorkshire</option>
+                <option value="Wiltshire">Wiltshire</option>
+            </select>
+            <label for="selectregion">Region:</label>
+            <select name="selectregion" id="searchcrimebyregion" onchange="getCrimeByFilter();">
+                <option value="All" selected="selected">All</option>
+                <option value="East">East</option>
+                <option value="East Midlands">East Midlands</option>
+                <option value="London">London</option>
+                <option value="North East">North East</option>
+                <option value="North West">North West</option>
+                <option value="South East">South East</option>
+                <option value="South West">South West</option>
+                <option value="Wales">Wales</option>
+                <option value="West Midlands">West Midlands</option>
+                <option value="Yorkshire">Yorkshire</option>
+            </select>
+            <label for="selectyear">Year:</label>
+            <select name="selectyear" id="searchcrimebyyear" onchange="getCrimeByFilter();">
+                <option value="All" selected="selected">All</option>
+                <option value="2008-09">2008 - 2009</option>
+                <option value="2009-10">2009 - 2010</option>
+                <option value="2010-11">2010 - 2011</option>
+                <option value="2011-12">2011 - 2012</option>
+                <option value="2012-13">2012 - 2013</option>
+                <option value="2013-14">2013 - 2014</option>
+                <option value="2014-15">2014 - 2015</option>
+                <option value="2015-16">2015 - 2016</option>
+                <option value="2016-17">2016 - 2017</option>
+                <option value="2017-18">2017 - 2018</option>
+                <option value="2018-19">2018 - 2019</option>
+            </select>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                &nbsp;
+            </div>
+        </div>
+        <div id="allknifecrimes" class="row"></div>
+        <div id="knifecrimesform" class="row"></div>
+
+        <footer>
+            <p>&copy; Student ID: 100540796</p>
+        </footer>
+    </div>
+
+    <script>
+        window.onload = function()
+        {
+            getAllKnifeCrimes();
+        };
+    </script>
+</body>
+</html>
